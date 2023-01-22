@@ -21,7 +21,9 @@ namespace TicTacToeServerSide.Services
         public static void Start()
         {
             Console.Title = "Server";
-            SetupServer();
+           
+                SetupServer();
+            
             Console.ReadLine();
             CloseAllSockets();
         }
@@ -39,9 +41,13 @@ namespace TicTacToeServerSide.Services
         private static void SetupServer()
         {
             Console.WriteLine("Setting up server . . . ");
-            serverSocket.Bind(new IPEndPoint(IPAddress.Any, PORT));
+            serverSocket.Bind(new IPEndPoint(IPAddress.Parse("10.2.13.15"), PORT));
             serverSocket.Listen(2);
+            while (true)
+            {
             serverSocket.BeginAccept(AcceptCallBack, null);
+
+            }
         }
 
         private static void AcceptCallBack(IAsyncResult ar)
@@ -57,7 +63,7 @@ namespace TicTacToeServerSide.Services
             }
 
             clientSockets.Add(socket);
-
+            Console.WriteLine($"{socket.RemoteEndPoint} connected");
             string t = "";
             if (!IsFirst)
             {
@@ -91,10 +97,9 @@ namespace TicTacToeServerSide.Services
                 return;
             }
 
-            byte[] recBuf=new byte[received];
+            byte[] recBuf = new byte[received];
             Array.Copy(buffer, recBuf, received);
             string text = Encoding.ASCII.GetString(recBuf);
-
             try
             {
                 var no = text[0];
@@ -103,9 +108,9 @@ namespace TicTacToeServerSide.Services
                 if (number >= 0 && number <= 2)
                     Points[0, number] = symbol;
                 else if (number >= 3 && number <= 5)
-                    Points[1, number-3] = symbol;
-                else if(number>=6 && number <= 8)
-                    Points[2, number-6] = symbol;
+                    Points[1, number - 3] = symbol;
+                else if (number >= 6 && number <= 8)
+                    Points[2, number - 6] = symbol;
             }
             catch (Exception ex)
             {
@@ -132,7 +137,7 @@ namespace TicTacToeServerSide.Services
                     Console.WriteLine($"Data sent to {item.RemoteEndPoint}");
                 }
             }
-            else if(text == "exit")
+            else if (text == "exit")
             {
                 current.Shutdown(SocketShutdown.Both);
                 current.Close();
@@ -148,7 +153,7 @@ namespace TicTacToeServerSide.Services
                 Console.WriteLine("Warning Sent");
             }
 
-            current.BeginReceive(buffer,0,BUFFER_SIZE,SocketFlags.None,ReceiveCallback,current);
+            current.BeginReceive(buffer, 0, BUFFER_SIZE, SocketFlags.None, ReceiveCallback, current);
         }
 
         private static string ConvertString(char[,] points)
