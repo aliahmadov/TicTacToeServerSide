@@ -21,9 +21,9 @@ namespace TicTacToeServerSide.Services
         public static void Start()
         {
             Console.Title = "Server";
-           
-                SetupServer();
-            
+
+            SetupServer();
+
             Console.ReadLine();
             CloseAllSockets();
         }
@@ -41,11 +41,11 @@ namespace TicTacToeServerSide.Services
         private static void SetupServer()
         {
             Console.WriteLine("Setting up server . . . ");
-            serverSocket.Bind(new IPEndPoint(IPAddress.Parse("10.2.13.15"), PORT));
+            serverSocket.Bind(new IPEndPoint(IPAddress.Parse("192.168.1.73"), PORT));
             serverSocket.Listen(2);
             while (true)
             {
-            serverSocket.BeginAccept(AcceptCallBack, null);
+                serverSocket.BeginAccept(AcceptCallBack, null);
 
             }
         }
@@ -159,9 +159,9 @@ namespace TicTacToeServerSide.Services
         private static string ConvertString(char[,] points)
         {
             var sb = new StringBuilder();
-            for (int i = 0; i < points.Length; i++)
+            for (int i = 0; i < 3; i++)
             {
-                for (int k = 0; k < points.Length; k++)
+                for (int k = 0; k < 3; k++)
                 {
                     sb.Append(points[i, k]);
                     sb.Append('\t');

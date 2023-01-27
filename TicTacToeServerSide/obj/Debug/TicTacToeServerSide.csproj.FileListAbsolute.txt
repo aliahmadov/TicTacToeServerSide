@@ -1,0 +1,8 @@
+C:\Users\eliah\Source\Repos\TicTacToeServerSide3212s\TicTacToeServerSide\bin\Debug\TicTacToeServerSide.exe.config
+C:\Users\eliah\Source\Repos\TicTacToeServerSide3212s\TicTacToeServerSide\bin\Debug\TicTacToeServerSide.exe
+C:\Users\eliah\Source\Repos\TicTacToeServerSide3212s\TicTacToeServerSide\bin\Debug\TicTacToeServerSide.pdb
+C:\Users\eliah\Source\Repos\TicTacToeServerSide3212s\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.csproj.AssemblyReference.cache
+C:\Users\eliah\Source\Repos\TicTacToeServerSide3212s\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.csproj.SuggestedBindingRedirects.cache
+C:\Users\eliah\Source\Repos\TicTacToeServerSide3212s\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.csproj.CoreCompileInputs.cache
+C:\Users\eliah\Source\Repos\TicTacToeServerSide3212s\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.exe
+C:\Users\eliah\Source\Repos\TicTacToeServerSide3212s\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.pdb
