@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using TicTacToeServerSide.Models;
 
 namespace TicTacToeServerSide.Services
 {
@@ -46,7 +48,6 @@ namespace TicTacToeServerSide.Services
             while (true)
             {
                 serverSocket.BeginAccept(AcceptCallBack, null);
-
             }
         }
 
@@ -81,6 +82,7 @@ namespace TicTacToeServerSide.Services
             socket.BeginReceive(buffer, 0, BUFFER_SIZE, SocketFlags.None, ReceiveCallback, socket);
         }
 
+
         private static void ReceiveCallback(IAsyncResult ar)
         {
             Socket current = (Socket)ar.AsyncState;
@@ -97,63 +99,74 @@ namespace TicTacToeServerSide.Services
                 return;
             }
 
+
             byte[] recBuf = new byte[received];
             Array.Copy(buffer, recBuf, received);
             string text = Encoding.ASCII.GetString(recBuf);
-            try
-            {
-                var no = text[0];
-                var symbol = text[1];
-                var number = Convert.ToInt32(no) - 49;
-                if (number >= 0 && number <= 2)
-                    Points[0, number] = symbol;
-                else if (number >= 3 && number <= 5)
-                    Points[1, number - 3] = symbol;
-                else if (number >= 6 && number <= 8)
-                    Points[2, number - 6] = symbol;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
 
-            for (int i = 0; i < 3; i++)
+
+            var clientItem = JsonConvert.DeserializeObject<ClientItem>(text);
+
+
+
+            if (clientItem==null)
             {
-                for (int k = 0; k < 3; k++)
+
+                try
                 {
-                    Console.Write($"{Points[i, k]}");
+                    var no = text[0];
+                    var symbol = text[1];
+                    var number = Convert.ToInt32(no) - 49;
+                    if (number >= 0 && number <= 2)
+                        Points[0, number] = symbol;
+                    else if (number >= 3 && number <= 5)
+                        Points[1, number - 3] = symbol;
+                    else if (number >= 6 && number <= 8)
+                        Points[2, number - 6] = symbol;
                 }
-                Console.WriteLine();
-                Console.WriteLine();
-            }
-
-            if (text != String.Empty)
-            {
-                var mydata = ConvertString(Points);
-                byte[] data = Encoding.ASCII.GetBytes(mydata);
-                foreach (var item in clientSockets)
+                catch (Exception ex)
                 {
-                    item.Send(data);
-                    Console.WriteLine($"Data sent to {item.RemoteEndPoint}");
+                    Console.WriteLine(ex.Message);
                 }
-            }
-            else if (text == "exit")
-            {
-                current.Shutdown(SocketShutdown.Both);
-                current.Close();
-                clientSockets.Remove(current);
-                Console.WriteLine($"{current.RemoteEndPoint} disconnected");
-                return;
-            }
-            else
-            {
-                Console.WriteLine("Text is an invalid request");
-                byte[] data = Encoding.ASCII.GetBytes("Invalid Request");
-                current.Send(data);
-                Console.WriteLine("Warning Sent");
-            }
 
-            current.BeginReceive(buffer, 0, BUFFER_SIZE, SocketFlags.None, ReceiveCallback, current);
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int k = 0; k < 3; k++)
+                    {
+                        Console.Write($"{Points[i, k]}");
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine();
+                }
+
+                if (text != String.Empty)
+                {
+                    var mydata = ConvertString(Points);
+                    byte[] data = Encoding.ASCII.GetBytes(mydata);
+                    foreach (var item in clientSockets)
+                    {
+                        item.Send(data);
+                        Console.WriteLine($"Data sent to {item.RemoteEndPoint}");
+                    }
+                }
+                else if (text == "exit")
+                {
+                    current.Shutdown(SocketShutdown.Both);
+                    current.Close();
+                    clientSockets.Remove(current);
+                    Console.WriteLine($"{current.RemoteEndPoint} disconnected");
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine("Text is an invalid request");
+                    byte[] data = Encoding.ASCII.GetBytes("Invalid Request");
+                    current.Send(data);
+                    Console.WriteLine("Warning Sent");
+                }
+
+                current.BeginReceive(buffer, 0, BUFFER_SIZE, SocketFlags.None, ReceiveCallback, current);
+            }
         }
 
         private static string ConvertString(char[,] points)

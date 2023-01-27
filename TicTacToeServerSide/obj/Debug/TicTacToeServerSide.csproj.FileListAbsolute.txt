@@ -6,3 +6,14 @@ C:\Users\eliah\Source\Repos\TicTacToeServerSide3212s\TicTacToeServerSide\obj\Deb
 C:\Users\eliah\Source\Repos\TicTacToeServerSide3212s\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.csproj.CoreCompileInputs.cache
 C:\Users\eliah\Source\Repos\TicTacToeServerSide3212s\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.exe
 C:\Users\eliah\Source\Repos\TicTacToeServerSide3212s\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.pdb
+C:\Users\eliah\Source\Repos\TicTacToeServerSides\TicTacToeServerSide\bin\Debug\TicTacToeServerSide.exe.config
+C:\Users\eliah\Source\Repos\TicTacToeServerSides\TicTacToeServerSide\bin\Debug\TicTacToeServerSide.exe
+C:\Users\eliah\Source\Repos\TicTacToeServerSides\TicTacToeServerSide\bin\Debug\TicTacToeServerSide.pdb
+C:\Users\eliah\Source\Repos\TicTacToeServerSides\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.csproj.AssemblyReference.cache
+C:\Users\eliah\Source\Repos\TicTacToeServerSides\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.csproj.SuggestedBindingRedirects.cache
+C:\Users\eliah\Source\Repos\TicTacToeServerSides\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.csproj.CoreCompileInputs.cache
+C:\Users\eliah\Source\Repos\TicTacToeServerSides\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.exe
+C:\Users\eliah\Source\Repos\TicTacToeServerSides\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.pdb
+C:\Users\eliah\Source\Repos\TicTacToeServerSides\TicTacToeServerSide\bin\Debug\Newtonsoft.Json.dll
+C:\Users\eliah\Source\Repos\TicTacToeServerSides\TicTacToeServerSide\bin\Debug\Newtonsoft.Json.xml
+C:\Users\eliah\Source\Repos\TicTacToeServerSides\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.csproj.CopyComplete
