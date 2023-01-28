@@ -23,7 +23,7 @@ namespace TicTacToeServerSide.Services
         public static void Start()
         {
             Console.Title = "Server";
-
+            ClientItems = new List<ClientItem>();
             SetupServer();
 
             Console.ReadLine();
@@ -82,7 +82,8 @@ namespace TicTacToeServerSide.Services
             socket.BeginReceive(buffer, 0, BUFFER_SIZE, SocketFlags.None, ReceiveCallback, socket);
         }
 
-
+        public static bool IsFirstSent { get; set; }
+        public static List<ClientItem> ClientItems { get; set; }
         private static void ReceiveCallback(IAsyncResult ar)
         {
             Socket current = (Socket)ar.AsyncState;
@@ -104,12 +105,32 @@ namespace TicTacToeServerSide.Services
             Array.Copy(buffer, recBuf, received);
             string text = Encoding.ASCII.GetString(recBuf);
 
+            try
+            {
+                var clientItem = JsonConvert.DeserializeObject<ClientItem>(text);
+                ClientItems.Add(clientItem);
+                IsFirstSent = true;
+                int index = 1;
+                if (clientSockets.Count == 2)
+                {
+                    foreach (var item in clientSockets)
+                    {
+                        var jsonString = JsonConvert.SerializeObject(ClientItems[index]);
+                        var bytes = Encoding.ASCII.GetBytes(jsonString);
+                        item.Send(bytes);
+                        index--;
+                    }
+                }
+            }
+            catch (Exception)
+            {
 
-            var clientItem = JsonConvert.DeserializeObject<ClientItem>(text);
+                IsFirst = false;
+            }
 
 
 
-            if (clientItem==null)
+            if (!IsFirst && clientSockets.Count == 2)
             {
 
                 try
@@ -165,8 +186,8 @@ namespace TicTacToeServerSide.Services
                     Console.WriteLine("Warning Sent");
                 }
 
-                current.BeginReceive(buffer, 0, BUFFER_SIZE, SocketFlags.None, ReceiveCallback, current);
             }
+            current.BeginReceive(buffer, 0, BUFFER_SIZE, SocketFlags.None, ReceiveCallback, current);
         }
 
         private static string ConvertString(char[,] points)
