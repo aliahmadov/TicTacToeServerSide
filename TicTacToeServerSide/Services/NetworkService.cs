@@ -43,7 +43,7 @@ namespace TicTacToeServerSide.Services
         private static void SetupServer()
         {
             Console.WriteLine("Setting up server . . . ");
-            serverSocket.Bind(new IPEndPoint(IPAddress.Parse("192.168.1.73"), PORT));
+            serverSocket.Bind(new IPEndPoint(IPAddress.Parse("192.168.56.1"), PORT));
             serverSocket.Listen(2);
             while (true)
             {
@@ -125,12 +125,12 @@ namespace TicTacToeServerSide.Services
             catch (Exception)
             {
 
-                IsFirst = false;
+                IsFirstSent = false;
             }
 
 
 
-            if (!IsFirst && clientSockets.Count == 2)
+            if (!IsFirstSent && clientSockets.Count == 2)
             {
 
                 try
@@ -185,9 +185,10 @@ namespace TicTacToeServerSide.Services
                     current.Send(data);
                     Console.WriteLine("Warning Sent");
                 }
-
+                current.BeginReceive(buffer, 0, BUFFER_SIZE, SocketFlags.None, ReceiveCallback, current);
             }
             current.BeginReceive(buffer, 0, BUFFER_SIZE, SocketFlags.None, ReceiveCallback, current);
+
         }
 
         private static string ConvertString(char[,] points)

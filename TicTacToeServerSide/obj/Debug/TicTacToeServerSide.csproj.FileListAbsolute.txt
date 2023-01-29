@@ -28,3 +28,14 @@ C:\Users\eliah\Source\Repos\TicTacToeServerSidee\TicTacToeServerSide\obj\Debug\T
 C:\Users\eliah\Source\Repos\TicTacToeServerSidee\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.csproj.CopyComplete
 C:\Users\eliah\Source\Repos\TicTacToeServerSidee\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.exe
 C:\Users\eliah\Source\Repos\TicTacToeServerSidee\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.pdb
+C:\Users\Ahme_cn21\Source\Repos\TicTacToeServerSide\TicTacToeServerSide\bin\Debug\TicTacToeServerSide.exe.config
+C:\Users\Ahme_cn21\Source\Repos\TicTacToeServerSide\TicTacToeServerSide\bin\Debug\TicTacToeServerSide.exe
+C:\Users\Ahme_cn21\Source\Repos\TicTacToeServerSide\TicTacToeServerSide\bin\Debug\TicTacToeServerSide.pdb
+C:\Users\Ahme_cn21\Source\Repos\TicTacToeServerSide\TicTacToeServerSide\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Ahme_cn21\Source\Repos\TicTacToeServerSide\TicTacToeServerSide\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Ahme_cn21\Source\Repos\TicTacToeServerSide\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.csproj.AssemblyReference.cache
+C:\Users\Ahme_cn21\Source\Repos\TicTacToeServerSide\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.csproj.SuggestedBindingRedirects.cache
+C:\Users\Ahme_cn21\Source\Repos\TicTacToeServerSide\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.csproj.CoreCompileInputs.cache
+C:\Users\Ahme_cn21\Source\Repos\TicTacToeServerSide\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.csproj.CopyComplete
+C:\Users\Ahme_cn21\Source\Repos\TicTacToeServerSide\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.exe
+C:\Users\Ahme_cn21\Source\Repos\TicTacToeServerSide\TicTacToeServerSide\obj\Debug\TicTacToeServerSide.pdb
