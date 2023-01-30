@@ -49,6 +49,7 @@
     <Compile Include="Models\ClientItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IPService.cs" />
     <Compile Include="Services\NetworkService.cs" />
   </ItemGroup>
   <ItemGroup>
