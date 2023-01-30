@@ -43,7 +43,7 @@ namespace TicTacToeServerSide.Services
         private static void SetupServer()
         {
             Console.WriteLine("Setting up server . . . ");
-            serverSocket.Bind(new IPEndPoint(IPAddress.Parse("192.168.56.1"), PORT));
+            serverSocket.Bind(new IPEndPoint(IPAddress.Parse("192.168.1.73"), PORT));
             serverSocket.Listen(2);
             while (true)
             {
@@ -187,7 +187,11 @@ namespace TicTacToeServerSide.Services
                 }
                 current.BeginReceive(buffer, 0, BUFFER_SIZE, SocketFlags.None, ReceiveCallback, current);
             }
-            current.BeginReceive(buffer, 0, BUFFER_SIZE, SocketFlags.None, ReceiveCallback, current);
+            else
+            {
+
+                current.BeginReceive(buffer, 0, BUFFER_SIZE, SocketFlags.None, ReceiveCallback, current);
+            }
 
         }
 
